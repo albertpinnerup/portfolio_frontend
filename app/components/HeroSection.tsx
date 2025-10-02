@@ -1,8 +1,34 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { heroQuery } from '../api/queries/hero';
+import { getFetch } from '../utils/getFetch';
+import { useEffect, useState } from 'react';
+
+type heroType = {
+    name: string;
+    description: string;
+    technologies: {
+        title: string;
+    }[];
+};
 
 export default function HeroSection() {
+    const [hero, setHero] = useState<heroType | null>(null);
+
+    useEffect(() => {
+        async function loadHero() {
+            const res = await getFetch(heroQuery);
+            const heroData = res.data.global.hero;
+
+            setHero(heroData);
+        }
+
+        loadHero();
+    }, []);
+
+    console.log(hero);
+
     return (
         <section className='relative min-h-screen flex items-center justify-center overflow-hidden'>
             <div className='absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-10 dark:opacity-10' />
@@ -17,24 +43,23 @@ export default function HeroSection() {
                     transition={{ duration: 0.8 }}
                 >
                     <h1 className='text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500'>
-                        Sarah Parker
+                        {hero?.name}
                     </h1>
                     <p className='text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8'>
-                        Frontend Developer & UI/UX Enthusiast
+                        {hero?.description}
                     </p>
                     <div className='flex flex-wrap justify-center gap-4 text-sm'>
-                        <span className='px-4 py-2 bg-blue-100 text-blue-700 rounded-full border border-blue-200 dark:bg-blue-500/10 dark:text-white dark:border-blue-500/20'>
-                            React
-                        </span>
-                        <span className='px-4 py-2 bg-blue-100 text-blue-700 rounded-full border border-blue-200 dark:bg-blue-500/10 dark:text-white dark:border-blue-500/20'>
-                            Next.js
-                        </span>
-                        <span className='px-4 py-2 bg-blue-100 text-blue-700 rounded-full border border-blue-200 dark:bg-blue-500/10 dark:text-white dark:border-blue-500/20'>
-                            TypeScript
-                        </span>
-                        <span className='px-4 py-2 bg-blue-100 text-blue-700 rounded-full border border-blue-200 dark:bg-blue-500/10 dark:text-white dark:border-blue-500/20'>
-                            Tailwind CSS
-                        </span>
+                        {hero?.technologies &&
+                            hero.technologies.length > 0 &&
+                            hero.technologies.map((tech, i) => (
+                                <span
+                                    key={i}
+                                    className='px-4 py-2 bg-blue-100 text-blue-700 rounded-full border border-blue-200
+                       dark:bg-blue-500/10 dark:text-white dark:border-blue-500/20'
+                                >
+                                    {tech.title}
+                                </span>
+                            ))}
                     </div>
                 </motion.div>
             </div>
