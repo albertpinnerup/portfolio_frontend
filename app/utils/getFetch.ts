@@ -1,7 +1,9 @@
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
+
 export const getFetch = async (query: string) => {
     const GRAPH_URL =
         process.env.NODE_ENV === 'production'
-            ? 'https://cms.albertpinnerup.dev/graphql'
+            ? `${STRAPI_URL}/graphql`
             : 'http://localhost:1337/graphql';
 
     const res = await fetch(GRAPH_URL, {
