@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 export type projectType = {
+    featured: boolean;
     title: string;
     description: string;
     image: {
@@ -14,7 +15,6 @@ export type projectType = {
     };
     slug: string;
     about: string;
-    featured: boolean;
     technologies: {
         title: string;
     }[];
