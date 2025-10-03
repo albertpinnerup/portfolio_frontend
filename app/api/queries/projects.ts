@@ -7,6 +7,7 @@ export const projectsQuery = `
       featured
       slug
       title
+      display_title
       technologies {
         title
       }
