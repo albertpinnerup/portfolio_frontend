@@ -52,12 +52,14 @@ export default function ProjectsSectionClient({ projects }: { projects: projectT
                                         <Link href={`projects/${project.slug}`}>
                                             <div className='transition-transform duration-300 group-hover:scale-105 relative bg-white/50 dark:bg-gray-900/50 rounded-xl overflow-hidden backdrop-blur-sm border border-gray-200 dark:border-gray-800'>
                                                 <div className='aspect-video relative overflow-hidden'>
-                                                    <Image
-                                                        src={project.image.url}
-                                                        alt={project.title}
-                                                        fill
-                                                        className='object-contain '
-                                                    />
+                                                    {project.image && (
+                                                        <Image
+                                                            src={project.image.url}
+                                                            alt={project.title}
+                                                            fill
+                                                            className='object-contain '
+                                                        />
+                                                    )}
                                                 </div>
                                                 <div className='p-6'>
                                                     <h3 className='text-xl font-bold mb-2'>
