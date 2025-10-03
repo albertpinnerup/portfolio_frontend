@@ -7,7 +7,7 @@ export const ProjectsSectionWrapper = async () => {
     const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
     const res = await getFetch(projectsQuery);
-    const projects = res.data.global.projects;
+    const projects = res?.data?.global?.projects ?? [];
 
     const normalizedProjects = projects.map((project: projectType) => ({
         ...project,
