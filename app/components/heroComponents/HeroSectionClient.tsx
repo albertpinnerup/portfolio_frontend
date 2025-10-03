@@ -1,9 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { heroQuery } from '../api/queries/hero';
-import { getFetch } from '../utils/getFetch';
-import { useEffect, useState } from 'react';
 
 type heroType = {
     name: string;
@@ -13,20 +10,7 @@ type heroType = {
     }[];
 };
 
-export default function HeroSection() {
-    const [hero, setHero] = useState<heroType | null>(null);
-
-    useEffect(() => {
-        async function loadHero() {
-            const res = await getFetch(heroQuery);
-            const heroData = res.data.global.hero;
-
-            setHero(heroData);
-        }
-
-        loadHero();
-    }, []);
-
+export default function HeroSectionClient({ hero }: { hero: heroType }) {
     console.log(hero);
 
     return (
