@@ -1,20 +1,21 @@
-export const projectsQuery = `{
+export const projectsQuery = `
+{
   global {
     projects {
       about
       description
+      featured
       slug
       title
-      featured
       technologies {
         title
       }
       image {
-        height
         width
+        height
         url
-        alternativeText
       }
     }
   }
-}`;
+}
+`;
