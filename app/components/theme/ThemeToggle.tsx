@@ -17,7 +17,7 @@ export function ThemeToggle() {
         if (userPref == true) {
             setTheme('dark');
         }
-    }, []);
+    });
 
     if (!mounted) {
         return null;
