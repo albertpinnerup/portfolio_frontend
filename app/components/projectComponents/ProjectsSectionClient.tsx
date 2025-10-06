@@ -23,6 +23,7 @@ export type projectType = {
 
 export default function ProjectsSectionClient({ projects }: { projects: projectType[] }) {
     const featuredProjects = projects?.filter((p) => p.featured);
+    const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
     return (
         <>
@@ -55,7 +56,7 @@ export default function ProjectsSectionClient({ projects }: { projects: projectT
                                                 <div className='aspect-video relative overflow-hidden'>
                                                     {project.image && (
                                                         <Image
-                                                            src={project.image.url}
+                                                            src={`${STRAPI_URL}${project.image.url}`}
                                                             alt={project.title}
                                                             fill
                                                             className='object-cover'
