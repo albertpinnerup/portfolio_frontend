@@ -13,7 +13,7 @@ export function ThemeToggle() {
     }, []);
 
     useEffect(() => {
-        let userPref = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const userPref = window.matchMedia('(prefers-color-scheme: dark)').matches;
         if (userPref == true) {
             setTheme('dark');
         }
