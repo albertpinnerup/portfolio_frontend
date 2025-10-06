@@ -41,7 +41,7 @@ export const metadata: Metadata = {
         title: 'Albert Pinnerup - Frontend Developer Portfolio',
         description:
             'Passionate frontend developer crafting beautiful and interactive web experiences. Explore my projects and frontend development expertise.',
-        url: 'https://your-domain.com',
+        url: 'https://albertpinnerup.dev',
         siteName: 'Albert Pinnerup - Portfolio',
         images: [
             {
@@ -55,11 +55,11 @@ export const metadata: Metadata = {
         type: 'website',
     },
     robots: {
-        index: true,
-        follow: true,
+        index: false,
+        follow: false,
         googleBot: {
-            index: true,
-            follow: true,
+            index: false,
+            follow: false,
             'max-video-preview': -1,
             'max-image-preview': 'large',
             'max-snippet': -1,
