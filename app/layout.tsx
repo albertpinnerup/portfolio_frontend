@@ -26,7 +26,6 @@ export const metadata: Metadata = {
         'Next.js',
         'TypeScript',
         'JavaScript',
-        'UI/UX',
         'Responsive Design',
         'Web Animation',
         'Modern Web Development',
@@ -54,14 +53,6 @@ export const metadata: Metadata = {
         ],
         locale: 'en_US',
         type: 'website',
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'Albert Pinnerup - Frontend Developer',
-        description:
-            'Passionate frontend developer crafting beautiful and interactive web experiences. Explore my projects and frontend development expertise.',
-        creator: '@yourusername',
-        images: ['/og-image.jpg'],
     },
     robots: {
         index: true,

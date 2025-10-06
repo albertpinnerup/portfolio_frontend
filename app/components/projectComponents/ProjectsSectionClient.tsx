@@ -27,7 +27,7 @@ export default function ProjectsSectionClient({ projects }: { projects: projectT
     return (
         <>
             {featuredProjects?.length > 0 && (
-                <section className='py-20 px-4'>
+                <section className='py-20 px-4' id='featured'>
                     <div className='max-w-6xl mx-auto'>
                         <motion.h2
                             initial={{ opacity: 0 }}
@@ -51,14 +51,14 @@ export default function ProjectsSectionClient({ projects }: { projects: projectT
                                         className='group'
                                     >
                                         <Link href={`projects/${project.slug}`}>
-                                            <div className='transition-transform duration-300 group-hover:scale-105 relative bg-white/50 dark:bg-gray-900/50 rounded-xl overflow-hidden backdrop-blur-sm border border-gray-200 dark:border-gray-800'>
+                                            <div className='transition-transform duration-300 group-hover:scale-105 h-[450px]  relative bg-white/50 dark:bg-gray-900/50 rounded-xl overflow-hidden backdrop-blur-sm border border-gray-200 dark:border-gray-800'>
                                                 <div className='aspect-video relative overflow-hidden'>
                                                     {project.image && (
                                                         <Image
                                                             src={project.image.url}
                                                             alt={project.title}
                                                             fill
-                                                            className='object-contain '
+                                                            className='object-cover'
                                                         />
                                                     )}
                                                 </div>
@@ -66,19 +66,9 @@ export default function ProjectsSectionClient({ projects }: { projects: projectT
                                                     <h3 className='text-xl font-bold mb-2'>
                                                         {project.display_title}
                                                     </h3>
-                                                    <p className='text-gray-600 dark:text-gray-400 mb-4'>
+                                                    <p className='text-gray-600 dark:text-gray-400 mb-4 line-clamp-3'>
                                                         {project.description}
                                                     </p>
-                                                    {/* <div className='flex flex-wrap gap-2'>
-                                    {project.tags.map((tag, i) => (
-                                        <span
-                                            key={i}
-                                            className='text-sm px-3 py-1 bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-white rounded-full'
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div> */}
                                                 </div>
                                             </div>
                                         </Link>

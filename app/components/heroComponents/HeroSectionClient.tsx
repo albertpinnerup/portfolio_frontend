@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 
 type heroType = {
     name: string;
@@ -11,7 +12,9 @@ type heroType = {
 };
 
 export default function HeroSectionClient({ hero }: { hero: heroType }) {
-    console.log(hero);
+    function scrollTo() {
+        document.getElementById('featured')?.scrollIntoView({ behavior: 'smooth' });
+    }
 
     return (
         <section className='relative min-h-screen flex items-center justify-center overflow-hidden'>
@@ -48,7 +51,10 @@ export default function HeroSectionClient({ hero }: { hero: heroType }) {
                 </motion.div>
             </div>
 
-            <div className='absolute bottom-10 left-1/2 transform -translate-x-1/2'>
+            <div
+                onClick={() => scrollTo()}
+                className='absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer'
+            >
                 <motion.div
                     animate={{ y: [0, 10, 0] }}
                     transition={{ duration: 2, repeat: Infinity }}
