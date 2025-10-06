@@ -12,12 +12,14 @@ export function ThemeToggle() {
         setMounted(true);
     }, []);
 
+    /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(() => {
         const userPref = window.matchMedia('(prefers-color-scheme: dark)').matches;
         if (userPref == true) {
             setTheme('dark');
         }
     });
+    /* eslint-disable react-hooks/exhaustive-deps */
 
     if (!mounted) {
         return null;
