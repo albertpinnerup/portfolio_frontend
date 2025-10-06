@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
         revalidateTag('strapi');
 
         return NextResponse.json({ revalidated: true });
-    } catch (err) {
+    } catch {
         return NextResponse.json({ message: 'Error revalidating' }, { status: 500 });
     }
 }
