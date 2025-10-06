@@ -12,7 +12,7 @@ export const getFetch = async (query: string) => {
             'Content-type': 'application/json',
         },
         body: JSON.stringify({ query }),
-        next: { revalidate: 3600 },
+        next: { revalidate: 3600, tags: ['strapi'] },
     });
 
     return res.json();
