@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
             {
                 protocol: 'https',
                 hostname: 'cms.albertpinnerup.dev',
+                port: '',
                 pathname: '/uploads/**',
             },
         ],
