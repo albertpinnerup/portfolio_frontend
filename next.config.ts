@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
             {
                 protocol: 'https',
                 hostname: 'cms.albertpinnerup.dev',
-                pathname: 'uploads/**',
+                pathname: '/uploads/**',
             },
         ],
     },
