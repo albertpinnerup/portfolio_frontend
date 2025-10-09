@@ -21,7 +21,5 @@ export const ProjectsSectionWrapper = async () => {
             : null,
     }));
 
-    console.log(projects.image);
-
     return <ProjectsSectionClient projects={normalizedProjects} />;
 };

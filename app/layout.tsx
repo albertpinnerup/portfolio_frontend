@@ -4,6 +4,7 @@ import { ThemeToggle } from './components/theme/ThemeToggle';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Analytics } from '@vercel/analytics/next';
+import { NavigationComp } from './components/Navigation';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -75,8 +76,13 @@ export default function RootLayout({
 }>) {
     return (
         <html lang='en' suppressHydrationWarning>
-            <body className={`${geistSans.variable} ${geistMono.variable}`}>
+            <body
+                className={`${geistSans.variable} ${geistMono.variable} bg-white dark:bg-[#0F172A]`}
+            >
                 <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+                    <header className='h-[72px] hidden sm:hidden'>
+                        <NavigationComp />
+                    </header>
                     {children}
                     <Analytics />
                     <ThemeToggle />

@@ -5,8 +5,8 @@ import ContactForm from './ContactForm';
 
 export default function ContactSection() {
     return (
-        <section className='py-20 px-4'>
-            <div className='max-w-4xl mx-auto'>
+        <section className='py-20'>
+            <div className='max-w-5xl px-4 mx-auto'>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -49,7 +49,7 @@ export default function ContactSection() {
                                 <span>Copenhagen, Denmark</span>
                             </div>
                         </motion.div>
-                        <div className='max-w-lg mx-auto'>
+                        <div className='max-w-2xl mx-auto'>
                             <ContactForm />
                         </div>
                         <div className='flex flex-col items-center gap-6 mt-8'>
