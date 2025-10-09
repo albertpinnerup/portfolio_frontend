@@ -3,7 +3,7 @@ import { getProjectByDocId } from '@/app/api/queries/projectByDocId';
 import { getFetch } from '@/app/utils/getFetch';
 import { ProjectPageClient } from './ProjectPageClient';
 
-export default async function ProjectPage({ params }: { params: { slug: string } }) {
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
 
     const res = await getFetch(getProjectDocumentId, { slug });
