@@ -8,7 +8,26 @@ import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
 import { BackButton } from '@/app/components/BackButton';
 
-export const ProjectPageClient = ({ project }: { project: any }) => {
+type ProjectType = {
+    display_title?: string;
+    description?: string;
+    about?: string;
+    documentId: string;
+    featured: boolean;
+    readable: boolean;
+    slug: string;
+    title: string;
+    technonologies: {
+        title: string;
+    };
+    image: {
+        url: string;
+        width: number;
+        height: number;
+    };
+};
+
+export const ProjectPageClient = ({ project }: { project: ProjectType }) => {
     const img = project?.image;
     const markdown = project?.about;
 

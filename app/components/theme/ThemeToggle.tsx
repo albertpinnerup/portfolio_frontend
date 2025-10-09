@@ -12,7 +12,6 @@ export function ThemeToggle() {
         setMounted(true);
     }, []);
 
-    /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(() => {
         const stored = localStorage.getItem('theme');
         if (stored) return;
@@ -22,7 +21,6 @@ export function ThemeToggle() {
             setTheme('dark');
         }
     });
-    /* eslint-disable react-hooks/exhaustive-deps */
 
     if (!mounted) {
         return null;

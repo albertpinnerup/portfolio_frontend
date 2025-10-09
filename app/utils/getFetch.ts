@@ -1,6 +1,6 @@
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
-export const getFetch = async (query: string, variable?: Record<string, any>) => {
+export const getFetch = async (query: string, variable?: Record<string, unknown>) => {
     const GRAPH_URL =
         process.env.NODE_ENV === 'production'
             ? `${STRAPI_URL}/graphql`
