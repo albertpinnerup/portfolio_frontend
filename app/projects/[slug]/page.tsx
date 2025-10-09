@@ -5,15 +5,8 @@ import { ProjectPageClient } from './ProjectPageClient';
 
 export const dynamic = 'force-dynamic';
 
-type ProjectPageProps =
-    | {
-          params: { slug: string };
-      }
-    | Promise<{ params: { slug: string } }>;
-
-export default async function ProjectPage(props: ProjectPageProps) {
-    const resolvedProps = await props;
-    const { slug } = resolvedProps.params;
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
 
     console.log('Page running with slug:', slug);
 
