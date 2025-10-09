@@ -23,15 +23,12 @@ export type projectType = {
 
 export default function ProjectsSectionClient({ projects }: { projects: projectType[] }) {
     const featuredProjects = projects?.filter((p) => p.featured);
-    const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
-
-    console.log(projects[0].image.url);
 
     return (
         <>
             {featuredProjects?.length > 0 && (
-                <section className='py-20 px-4' id='featured'>
-                    <div className='max-w-6xl mx-auto'>
+                <section className='py-20' id='featured'>
+                    <div className='max-w-6xl px-4 mx-auto'>
                         <motion.h2
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}

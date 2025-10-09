@@ -8,6 +8,7 @@ export const projectsQuery = `
       slug
       title
       display_title
+      documentId
       technologies {
         title
       }

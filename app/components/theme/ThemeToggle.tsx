@@ -14,6 +14,9 @@ export function ThemeToggle() {
 
     /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(() => {
+        const stored = localStorage.getItem('theme');
+        if (stored) return;
+
         const userPref = window.matchMedia('(prefers-color-scheme: dark)').matches;
         if (userPref == true) {
             setTheme('dark');
