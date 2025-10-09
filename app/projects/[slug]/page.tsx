@@ -3,6 +3,8 @@ import { getProjectByDocId } from '@/app/api/queries/projectByDocId';
 import { getFetch } from '@/app/utils/getFetch';
 import { ProjectPageClient } from './ProjectPageClient';
 
+export const dynamic = 'force-dynamic';
+
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
 
