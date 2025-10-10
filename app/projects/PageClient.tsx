@@ -6,8 +6,9 @@ import Image from 'next/image';
 import { projectType } from '../components/projectComponents/ProjectsSectionClient';
 import { normalizeMedia } from '../utils/normalizeImage';
 import { BackButton } from '../components/BackButton';
+import { ProjectType } from '../api/schemas/schemas';
 
-export const PageClient = ({ projects }: { projects: projectType[] }) => {
+export const PageClient = ({ projects }: { projects: ProjectType[] }) => {
     const readableProjects = projects?.filter((p) => p.featured || p.readable);
 
     console.log('readable projects: ', readableProjects);

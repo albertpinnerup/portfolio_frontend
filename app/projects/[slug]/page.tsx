@@ -2,24 +2,24 @@ import { getProjectDocumentId } from '@/app/api/queries/getDocumentId';
 import { getProjectByDocId } from '@/app/api/queries/projectByDocId';
 import { getFetch } from '@/app/utils/getFetch';
 import { ProjectPageClient } from './ProjectPageClient';
+import { DocumentIdResponseSchema, ProjectByDocIdSchema } from '@/app/api/schemas/schemas';
 
 export const dynamic = 'force-dynamic';
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
 
-    console.log('Page running with slug:', slug);
-
     const res = await getFetch(getProjectDocumentId, { slug });
 
-    console.log('Graphql response: ', res);
+    const parsedDocId = DocumentIdResponseSchema.safeParse(res);
 
-    const docID = res?.data?.projects?.[0].documentId ?? null;
+    if (!parsedDocId.success) {
+        console.error('Invalid document id response', parsedDocId.error);
+        return null;
+    }
 
-    console.log('documentId: ', docID);
-
+    const docID = parsedDocId.data.data.projects[0]?.documentId ?? null;
     if (!docID) {
-        console.log('No document found for slug', slug);
         return (
             <main>
                 <p>Not found: {slug}</p>
@@ -28,13 +28,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     }
 
     const projectRes = await getFetch(getProjectByDocId, { documentId: docID });
-    console.log('project response: ', projectRes);
+    const parsedProject = ProjectByDocIdSchema.safeParse(projectRes);
 
-    const project = projectRes?.data.project ?? null;
-    console.log('project data:', project);
+    if (!parsedProject.success) {
+        console.error('Invalid project response', parsedProject.error);
+        return null;
+    }
+
+    const project = parsedProject.data.data.project;
 
     if (!project) {
-        console.log('No project data');
         return (
             <main>
                 <p>Not found: {slug}</p>

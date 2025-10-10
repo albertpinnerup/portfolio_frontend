@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { ProjectType } from '@/app/api/schemas/schemas';
 
 export type projectType = {
     featured: boolean;
@@ -22,7 +23,7 @@ export type projectType = {
     }[];
 };
 
-export default function ProjectsSectionClient({ projects }: { projects: projectType[] }) {
+export default function ProjectsSectionClient({ projects }: { projects: ProjectType[] }) {
     const featuredProjects = projects?.filter((p) => p.featured);
 
     return (

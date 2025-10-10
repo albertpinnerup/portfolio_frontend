@@ -7,25 +7,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
 import { BackButton } from '@/app/components/BackButton';
-
-type ProjectType = {
-    display_title?: string;
-    description?: string;
-    about?: string;
-    documentId: string;
-    featured: boolean;
-    readable: boolean;
-    slug: string;
-    title: string;
-    technonologies: {
-        title: string;
-    };
-    image: {
-        url: string;
-        width: number;
-        height: number;
-    };
-};
+import { ProjectType } from '@/app/api/schemas/schemas';
 
 export const ProjectPageClient = ({ project }: { project: ProjectType }) => {
     const img = project?.image;
@@ -50,9 +32,9 @@ export const ProjectPageClient = ({ project }: { project: ProjectType }) => {
                 <div className='bg-white dark:bg-[#0f172a] shadow-xl dark:shadow-[#192747] h-screen'>
                     <div className='mx-auto w-full mt-6 aspect-video max-h-[550px] overflow-clip'>
                         <Image
-                            src={normalizeMedia(img.url)}
-                            width={img.width}
-                            height={img.height}
+                            src={normalizeMedia(img?.url)}
+                            width={img?.width}
+                            height={img?.height}
                             className='object-contain w-full'
                             style={{ color: 'inherit' }}
                             alt={project.title}

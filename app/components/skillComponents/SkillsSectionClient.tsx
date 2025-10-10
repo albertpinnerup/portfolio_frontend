@@ -1,14 +1,9 @@
 'use client';
 
+import { TechnologyType } from '@/app/api/schemas/schemas';
 import { motion } from 'framer-motion';
 
-type skillsType = {
-    title: string;
-    level: number;
-    description?: string;
-};
-
-export default function SkillsSectionClient({ skills }: { skills: skillsType[] }) {
+export default function SkillsSectionClient({ skills }: { skills: TechnologyType[] }) {
     return (
         <section className='py-20 px-4 bg-white/50 dark:bg-gray-900/50'>
             <div className='max-w-4xl mx-auto'>
