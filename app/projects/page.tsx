@@ -1,11 +1,19 @@
 import { allProjectsQuery } from '../api/queries/allProjects';
 import { projectsQuery } from '../api/queries/projects';
+import { ProjectsArraySchema } from '../api/schemas/schemas';
 import { getFetch } from '../utils/getFetch';
 import { PageClient } from './PageClient';
 
 export default async function AllProjects() {
     const res = await getFetch(allProjectsQuery);
-    const projects = res?.data?.projects ?? [];
+
+    const parsedRes = ProjectsArraySchema.safeParse(res.data.projects);
+
+    if (!parsedRes.success) {
+        console.error('invalid projects response', parsedRes.error);
+        return null;
+    }
+    const projects = parsedRes.data;
 
     console.log('all projects: ', projects);
 

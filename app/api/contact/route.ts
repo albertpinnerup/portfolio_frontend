@@ -1,31 +1,45 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
+import { ContactSchema } from '../schemas/schemas';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
-	try {
-		const { name, email, message } = await request.json();
+    try {
+        const body = await request.json();
 
-		// Basic validation
-		if (!name || !email || !message) {
-			return NextResponse.json({ error: 'Name, email and message are required' }, { status: 400 });
-		}
+        const parsed = ContactSchema.safeParse(body);
+        if (!parsed.success) {
+            return NextResponse.json({ error: parsed.error.issues[0].message }, { status: 400 });
+        }
 
-		const data = await resend.emails.send({
-			from: 'Your Portfolio Contact Form <onboarding@resend.dev>',
-			to: process.env.CONTACT_EMAIL as string, // Your email address
-			subject: `New Contact Form Submission from ${name}`,
-			text: `
+        const { name, email, message } = parsed.data;
+
+        // Basic validation
+        if (!name || !email || !message) {
+            return NextResponse.json(
+                { error: 'Name, email and message are required' },
+                { status: 400 }
+            );
+        }
+
+        const data = await resend.emails.send({
+            from: 'Your Portfolio Contact Form <onboarding@resend.dev>',
+            to: process.env.CONTACT_EMAIL as string, // Your email address
+            subject: `New Contact Form Submission from ${name}`,
+            text: `
 				Name: ${name}
 				Email: ${email}
 				Message: ${message}
       `,
-			replyTo: email,
-		});
+            replyTo: email,
+        });
 
-		return NextResponse.json(data);
-	} catch (error) {
-		return NextResponse.json({ error: error instanceof Error ? error.message : 'Failed to send email' }, { status: 500 });
-	}
+        return NextResponse.json(data);
+    } catch (error) {
+        return NextResponse.json(
+            { error: error instanceof Error ? error.message : 'Failed to send email' },
+            { status: 500 }
+        );
+    }
 }

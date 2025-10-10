@@ -3,5 +3,23 @@
 @tailwind utilities;
 
 body {
-	font-family: var(--font-geist-sans);
+    font-family: var(--font-geist-sans);
+}
+
+/* Toast content text */
+.Toastify__toast div[role='alert'] {
+    @apply text-gray-900;
+}
+
+html.dark .Toastify__toast div[role='alert'] {
+    @apply text-white;
+}
+
+/* Close button icon */
+.Toastify__close-button button[aria-label='close'] svg {
+    @apply text-gray-900;
+}
+
+html.dark .Toastify__close-button[aria-label='close'] svg {
+    @apply text-white;
 }

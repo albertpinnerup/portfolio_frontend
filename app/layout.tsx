@@ -5,6 +5,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Analytics } from '@vercel/analytics/next';
 import { NavigationComp } from './components/Navigation';
+import { ToastContainer } from 'react-toastify';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -86,6 +87,12 @@ export default function RootLayout({
                     {children}
                     <Analytics />
                     <ThemeToggle />
+                    <ToastContainer
+                        toastClassName={
+                            'bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white'
+                        }
+                        toastStyle={{}}
+                    />
                 </ThemeProvider>
             </body>
         </html>
