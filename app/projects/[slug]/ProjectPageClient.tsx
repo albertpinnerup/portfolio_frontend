@@ -34,7 +34,7 @@ export const ProjectPageClient = ({ project }: { project: ProjectType }) => {
     return (
         <>
             <div className='absolute h-full inset-0 bg-[url("/grid-dark.svg")] dark:bg-[url("/grid.svg")] bg-center opacity-20 pointer-events-none bg-blend-overlay' />
-            <BackButton className='rotate-90 fixed z-10 top-6 left-6 transition-transform duration-150 hover:scale-125'>
+            <BackButton className='rotate-90 fixed z-10 p-2 rounded-full bg-gray-200 dark:bg-gray-800 top-6 left-6 transition-transform duration-150 hover:scale-125 active:scale-95'>
                 <div>
                     <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                         <path

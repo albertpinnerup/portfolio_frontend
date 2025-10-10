@@ -1,34 +1,35 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
+import { projectType } from '../components/projectComponents/ProjectsSectionClient';
+import { normalizeMedia } from '../utils/normalizeImage';
+import { BackButton } from '../components/BackButton';
 
-export type projectType = {
-    featured: boolean;
-    readable: boolean;
-    title: string;
-    display_title: string;
-    description: string;
-    image: {
-        height: number;
-        width: number;
-        url: string;
-    };
-    slug: string;
-    about: string;
-    technologies: {
-        title: string;
-    }[];
-};
+export const PageClient = ({ projects }: { projects: projectType[] }) => {
+    const readableProjects = projects?.filter((p) => p.featured || p.readable);
 
-export default function ProjectsSectionClient({ projects }: { projects: projectType[] }) {
-    const featuredProjects = projects?.filter((p) => p.featured);
+    console.log('readable projects: ', readableProjects);
 
     return (
         <>
-            {featuredProjects?.length > 0 && (
-                <section className='py-20 pb-12' id='featured'>
+            <div className='absolute h-full inset-0 bg-[url("/grid-dark.svg")] dark:bg-[url("/grid.svg")] bg-center opacity-20 pointer-events-none bg-blend-overlay' />
+            <BackButton className='rotate-90 fixed z-10 p-2 rounded-full bg-gray-200 dark:bg-gray-800 top-6 left-6 transition-transform duration-150 hover:scale-125 active:scale-95'>
+                <div>
+                    <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                        <path
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            strokeWidth='2'
+                            d='M19 14l-7 7m0 0l-7-7m7 7V3'
+                        />
+                    </svg>
+                </div>
+            </BackButton>
+
+            {readableProjects?.length > 0 && (
+                <section className='py-20' id='featured'>
                     <div className='max-w-6xl px-4 mx-auto'>
                         <motion.h2
                             initial={{ opacity: 0 }}
@@ -36,12 +37,16 @@ export default function ProjectsSectionClient({ projects }: { projects: projectT
                             viewport={{ once: true }}
                             className='text-3xl font-bold mb-12 text-center'
                         >
-                            Featured Projects
+                            All Projects
                         </motion.h2>
 
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
-                            {featuredProjects
-                                ?.filter((project) => project.featured == true)
+                            {readableProjects
+                                ?.filter(
+                                    (project) =>
+                                        (project.featured === true || project.readable === true) &&
+                                        project.display_title
+                                )
                                 .map((project, index) => (
                                     <motion.div
                                         key={index}
@@ -52,11 +57,11 @@ export default function ProjectsSectionClient({ projects }: { projects: projectT
                                         className='group'
                                     >
                                         <Link href={`projects/${project.slug}`}>
-                                            <div className='transition-transform duration-300 group-hover:scale-105 h-[450px]  relative bg-white/50 dark:bg-gray-900/50 rounded-xl overflow-hidden backdrop-blur-sm border border-gray-200 dark:border-gray-800'>
+                                            <div className='transition-transform duration-300 group-hover:scale-105 h-[450px]  relative bg-white/50 dark:bg-gray-900/75 rounded-xl overflow-hidden backdrop-blur-sm border border-gray-200 dark:border-gray-800'>
                                                 <div className='aspect-video relative overflow-hidden'>
                                                     {project.image && (
                                                         <Image
-                                                            src={`${project.image.url}`}
+                                                            src={normalizeMedia(project.image.url)}
                                                             alt={project.title}
                                                             fill
                                                             className='object-cover'
@@ -76,15 +81,9 @@ export default function ProjectsSectionClient({ projects }: { projects: projectT
                                     </motion.div>
                                 ))}
                         </div>
-                        <Link
-                            href={'projects'}
-                            className='mx-auto mt-12 block text-gray-200 w-fit px-6 rounded-lg hover:scale-105 active:scale-95 scale-100 transition-transform duration-150 py-4 bg-gradient-to-r from-blue-500 to-purple-500'
-                        >
-                            <h3 className='text-xl text-center'>See all projects</h3>
-                        </Link>
                     </div>
                 </section>
             )}
         </>
     );
-}
+};
