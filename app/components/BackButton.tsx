@@ -17,7 +17,7 @@ export const BackButton = ({ children, className }: BackButtonType) => {
     }
 
     return (
-        <button className={className} onClick={handleBack}>
+        <button className={`text-gray-900 dark:text-white ${className ?? ''}`} onClick={handleBack}>
             {children}
         </button>
     );
