@@ -34,7 +34,7 @@ export const ProjectPageClient = ({ project }: { project: ProjectType }) => {
     return (
         <>
             <div className='absolute h-full inset-0 bg-[url("/grid-dark.svg")] dark:bg-[url("/grid.svg")] bg-center opacity-20 pointer-events-none bg-blend-overlay' />
-            <BackButton className='rotate-90 fixed top-6 left-6 transition-transform duration-150 hover:scale-125'>
+            <BackButton className='rotate-90 fixed z-10 top-6 left-6 transition-transform duration-150 hover:scale-125'>
                 <div>
                     <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                         <path
@@ -47,7 +47,7 @@ export const ProjectPageClient = ({ project }: { project: ProjectType }) => {
                 </div>
             </BackButton>
             <section className='max-w-6xl px-6 pb-[4.5rem] mx-auto h-screen relative bg-transparent'>
-                <div className='bg-white dark:bg-[#0F172A] h-screen'>
+                <div className='bg-white dark:bg-[#0f172a] shadow-xl dark:shadow-[#192747] h-screen'>
                     <div className='mx-auto w-full mt-6 aspect-video max-h-[550px] overflow-clip'>
                         <Image
                             src={normalizeMedia(img.url)}
@@ -58,8 +58,10 @@ export const ProjectPageClient = ({ project }: { project: ProjectType }) => {
                             alt={project.title}
                         />
                     </div>
-                    <section className='px-4'>
-                        <h1 className='text-6xl mt-6 mb-6 font-bold'>{project.display_title}</h1>
+                    <section className='px-8'>
+                        <h1 className='text-6xl text-center mt-6 mb-6 font-bold'>
+                            {project.display_title}
+                        </h1>
                         <Markdown
                             remarkPlugins={[remarkGfm]}
                             rehypePlugins={[rehypeRaw, rehypeSanitize]}
