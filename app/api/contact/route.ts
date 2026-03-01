@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
-import { ContactSchema } from '../schemas/schemas';
+import { ContactSchema } from '@/lib/schemas/schemas';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

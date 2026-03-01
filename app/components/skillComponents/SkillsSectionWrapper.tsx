@@ -1,7 +1,7 @@
-import { skillsQuery } from '@/app/api/queries/skills';
+import { skillsQuery } from '@/lib/queries/skills';
+import { TechnologySchemaArray } from '@/lib/schemas/schemas';
 import { getFetch } from '../../utils/getFetch';
 import SkillsSectionClient from './SkillsSectionClient';
-import { TechnologySchemaArray } from '@/app/api/schemas/schemas';
 
 export const SkillsSectionWrapper = async () => {
     const res = await getFetch(skillsQuery);

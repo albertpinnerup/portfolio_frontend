@@ -1,13 +1,13 @@
 'use client';
 
-import { normalizeMedia } from '@/app/utils/normalizeImage';
 import Image from 'next/image';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
-import { BackButton } from '@/app/components/BackButton';
-import { ProjectType } from '@/app/api/schemas/schemas';
+import { BackButton } from '@/components/BackButton';
+import { ProjectType } from '@/lib/schemas/schemas';
+import { normalizeMedia } from '@/utils/normalizeImage';
 
 export const ProjectPageClient = ({ project }: { project: ProjectType }) => {
     const img = project?.image;

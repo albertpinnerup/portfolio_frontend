@@ -1,4 +1,4 @@
-import { heroQuery } from '../../api/queries/hero';
+import { heroQuery } from '@/lib/queries/hero';
 import { getFetch } from '../../utils/getFetch';
 import HeroSectionClient from './HeroSectionClient';
 

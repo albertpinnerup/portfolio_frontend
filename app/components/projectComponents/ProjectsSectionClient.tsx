@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ProjectType } from '@/app/api/schemas/schemas';
+import { ProjectType } from '@/lib/schemas/schemas';
 
 export type projectType = {
     featured: boolean;

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getFetch } from '../utils/getFetch';
-import { navLinkQuery } from '../api/queries/navLinks';
+import { navLinkQuery } from '@/lib/queries/navLinks';
 
 export const NavigationComp = async () => {
     const res = await getFetch(navLinkQuery);

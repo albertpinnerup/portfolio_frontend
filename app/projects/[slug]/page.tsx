@@ -1,8 +1,8 @@
-import { getProjectDocumentId } from '@/app/api/queries/getDocumentId';
-import { getProjectByDocId } from '@/app/api/queries/projectByDocId';
-import { getFetch } from '@/app/utils/getFetch';
+import { getProjectDocumentId } from '@/lib/queries/getDocumentId';
+import { getProjectByDocId } from '@/lib/queries/projectByDocId';
+import { DocumentIdResponseSchema, ProjectByDocIdSchema } from '@/lib/schemas/schemas';
+import { getFetch } from '@/utils/getFetch';
 import { ProjectPageClient } from './ProjectPageClient';
-import { DocumentIdResponseSchema, ProjectByDocIdSchema } from '@/app/api/schemas/schemas';
 
 export const dynamic = 'force-dynamic';
 

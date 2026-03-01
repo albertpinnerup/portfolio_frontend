@@ -1,7 +1,7 @@
-import { projectsQuery } from '@/app/api/queries/projects';
-import { getFetch } from '@/app/utils/getFetch';
+import { projectsQuery } from '@/lib/queries/projects';
+import { ProjectsArraySchema } from '@/lib/schemas/schemas';
+import { getFetch } from '@/utils/getFetch';
 import ProjectsSectionClient from './ProjectsSectionClient';
-import { ProjectsArraySchema } from '@/app/api/schemas/schemas';
 
 export const ProjectsSectionWrapper = async () => {
     const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;

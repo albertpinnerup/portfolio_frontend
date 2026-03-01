@@ -1,6 +1,6 @@
 'use client';
 
-import { TechnologyType } from '@/app/api/schemas/schemas';
+import { TechnologyType } from '@/lib/schemas/schemas';
 import { motion } from 'framer-motion';
 
 export default function SkillsSectionClient({ skills }: { skills: TechnologyType[] }) {

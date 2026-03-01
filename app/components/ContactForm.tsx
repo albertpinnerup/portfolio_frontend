@@ -1,7 +1,7 @@
 'use client';
 
+import { ContactSchema } from '@/lib/schemas/schemas';
 import { useState } from 'react';
-import { ContactSchema } from '../api/schemas/schemas';
 import { toast } from 'react-toastify';
 
 export default function ContactForm() {
