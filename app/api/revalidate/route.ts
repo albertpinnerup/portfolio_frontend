@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
 
         // Revalidate entire site (or specify paths)
         try {
-            revalidateTag('strapi');
+            revalidateTag('strapi', 'max');
             return NextResponse.json({ revalidated: true, now: Date.now(), body }, { status: 200 });
         } catch (err) {
             return NextResponse.json(
