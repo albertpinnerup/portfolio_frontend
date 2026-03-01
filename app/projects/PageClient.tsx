@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { projectType } from '../components/projectComponents/ProjectsSectionClient';
 import { normalizeMedia } from '../utils/normalizeImage';
 import { BackButton } from '../components/BackButton';
 import { ProjectType } from '../api/schemas/schemas';

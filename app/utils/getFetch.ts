@@ -12,6 +12,7 @@ export const getFetch = async (query: string, variable?: Record<string, unknown>
             'Content-type': 'application/json',
         },
         body: JSON.stringify({ query, variables: { ...variable } }),
+        cache: 'force-cache',
         next: { revalidate: 3600, tags: ['strapi'] },
     });
 

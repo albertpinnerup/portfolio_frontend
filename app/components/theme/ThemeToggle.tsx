@@ -1,26 +1,26 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useSyncExternalStore } from 'react';
 import { useTheme } from 'next-themes';
 import { Sun, Moon } from 'lucide-react';
 
-export function ThemeToggle() {
-    const [mounted, setMounted] = useState(false);
-    const { theme, setTheme } = useTheme();
+function subscribe() {
+    return () => {};
+}
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+export function ThemeToggle() {
+    const { theme, setTheme } = useTheme();
+    const mounted = useSyncExternalStore(subscribe, () => true, () => false);
 
     useEffect(() => {
         const stored = localStorage.getItem('theme');
         if (stored) return;
 
         const userPref = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (userPref == true) {
+        if (userPref) {
             setTheme('dark');
         }
-    });
+    }, [setTheme]);
 
     if (!mounted) {
         return null;

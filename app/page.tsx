@@ -1,4 +1,3 @@
-import { usePathname } from 'next/navigation';
 import ContactSection from './components/ContactSection';
 import { HeroSectionWrapper } from './components/heroComponents/HeroSectionWrapper';
 import { ProjectsSectionWrapper } from './components/projectComponents/ProjectsSectionWrapper';

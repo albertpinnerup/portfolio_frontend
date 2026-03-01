@@ -1,7 +1,6 @@
 import { projectsQuery } from '@/app/api/queries/projects';
 import { getFetch } from '@/app/utils/getFetch';
 import ProjectsSectionClient from './ProjectsSectionClient';
-import { projectType } from './ProjectsSectionClient';
 import { ProjectsArraySchema } from '@/app/api/schemas/schemas';
 
 export const ProjectsSectionWrapper = async () => {

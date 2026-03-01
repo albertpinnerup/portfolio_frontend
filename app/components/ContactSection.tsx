@@ -54,7 +54,7 @@ export default function ContactSection() {
                         </div>
                         <div className='flex flex-col items-center gap-6 mt-8'>
                             <motion.a
-                                href='/resume.pdf'
+                                href='/myCV.pdf'
                                 target='_blank'
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
