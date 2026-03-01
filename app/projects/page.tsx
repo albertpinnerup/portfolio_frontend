@@ -1,5 +1,4 @@
 import { allProjectsQuery } from '../api/queries/allProjects';
-import { projectsQuery } from '../api/queries/projects';
 import { ProjectsArraySchema } from '../api/schemas/schemas';
 import { getFetch } from '../utils/getFetch';
 import { PageClient } from './PageClient';
